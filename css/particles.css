@@ -1,0 +1,23 @@
+/* For Canvas Background*/
+/* Everything should be IN the div with class container*/
+body {
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    position: fixed;
+    margin: 0;
+    background-color: #fff;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}

@@ -1,368 +1,60 @@
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<link rel="shortcut icon" href="favicon.ico" >
-   <link rel="icon" type="image/gif" href="animated_favicon.gif" >
-  <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" type="text/css" href="css/comet.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/pure-css3-animated-border/css/animated-border/animated-border.css">
+    <script src="js/actions.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
 
-  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
-       More info: h5bp.com/b/378 -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <title>DevSpace | Coming soon ..</title>
-  <meta name="description" content="DevSpace landing page">
-  <meta name="author" content="DevSpace">
-
-  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-    <style>
-        html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        
-        body {
-            background-color: #191919;
-        }
-        
-        #page {
-            position: absolute;
-            text-align: center;
-            left: 50%;
-            top: 50%;
-            color: #222;
-            transform: translateX(-50%) translateY(-50%) scale(0.4);
-            animation: presp 2s forwards ease;
-        }
-        
-        .box-wrapper {
-            perspective: 450px;
-            perspective-origin: 50% 100px;
-            animation: presp 2s forwards ease;
-        }
-        
-        @keyframes presp {
-            from {}
-            to {
-                transform: scale(0.9) translateX(-30%) translateY(-45px)
-            }
-        }
-        
-        .box {
-            position: relative;
-            width: 200px;
-            transform-style: preserve-3d;
-        }
-        
-        .box:hover {
-            transform: rotateX(45deg);
-        }
-        
-        .box p {
-            padding: 40px 0;
-        }
-        
-        .box div {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            opacity: 1;
-        }
-        
-        .box {
-            animation: box 2s forwards, box2 8s 2s forwards infinite ease;
-        }
-        
-        .back {
-            transform: translateZ(-100px) rotateX(90deg);
-            background: url("face.png");
-            transform-origin: center bottom;
-            animation: back 2s forwards;
-            box-shadow: inset 0px 0px 100px 2px black;
-        }
-        
-        .right {
-            transform: rotateY(-270deg) translateX(0px) translateZ(100px) rotateX(270deg);
-            transform-origin: center bottom;
-            background: url("face.png");
-            animation: right 2s forwards ease;
-            box-shadow: inset 0px 0px 100px 2px black;
-        }
-        
-        .left {
-            transform: rotateY(270deg) translateX(00px) translateZ(100px) rotateX(270deg);
-            transform-origin: center bottom;
-            background: url("left.png");
-            animation: left 2s forwards ease;
-            box-shadow: inset 0px 0px 100px 2px black;
-        }
-        
-        .top {
-            transform: rotateX(-90deg) translateY(-100px);
-            transform-origin: top center;
-            background: url("face.png");
-            display: none;
-        }
-        
-        .bottom {
-            transform: rotateX(90deg) translateY(100px);
-            transform-origin: bottom center;
-            background-color: #bbb;
-            background: url("face.png");
-            box-shadow: inset 0px 0px 100px 2px black;
-            animation: shadow 1s 1s forwards ease;
-        }
-        
-        @keyframes shadow {
-            from {
-                box-shadow: inset 0px 0px 100px 2px black
-            }
-            to {
-                box-shadow: inset 0px 0px 100px 2px black, 0px 0px 100px 2px black;
-            }
-        }
-        
-        .front {
-            transform-origin: center bottom;
-            transform: translateZ(100px) rotateX(-90deg);
-            background: url("front.png");
-            animation: front 2s forwards ease;
-            box-shadow: inset 0px 0px 100px 2px black;
-        }
-        
-        @keyframes front {
-            from {}
-            to {
-                transform: translateZ(100px) rotateX(0deg);
-            }
-        }
-        
-        @keyframes left {
-            from {}
-            to {
-                transform: rotateY(270deg) translateX(00px) translateZ(100px) rotateX(360deg)
-            }
-        }
-        
-        @keyframes back {
-            from {}
-            to {
-                transform: translateZ(-100px) rotateX(0deg)
-            }
-        }
-        
-        @keyframes right {
-            from {}
-            to {
-                transform: rotateY(-270deg) translateX(0px) translateZ(100px) rotateX(360deg);
-            }
-        }
-        
-        @keyframes box {
-            from {
-                transform: rotateX(90deg)
-            }
-            to {
-                transform: rotateY(45deg)
-            }
-        }
-        
-        @keyframes box2 {
-            from {
-                transform: rotateY(45deg)
-            }
-            50% {
-                transform: rotateY(405deg)
-            }
-            to {
-                transform: rotateY(405deg)
-            }
-        }
-        
-        .box:hover {
-            cursor: pointer;
-        }
-        
-        p {
-            width: 151px;
-            z-index: 22;
-            color: aliceblue;
-            font-size: 1.2em;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            color: dodgerblue;
-            opacity: 0;
-            font-family: devspace;
-            transform: translateX(-50%) translateY(-50%) translateY(120px);
-            animation: p 2s 1s forwards ease, bounce 2s 1s cubic-bezier(0, -0.35, 1, 1.38) infinite;
-        }
-        
-        .text-shadow {
-            z-index: 25;
-            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.62) 22%, rgba(118, 118, 118, 0) 58%, rgba(255, 255, 255, 0) 100%);
-            font-size: 1.2em;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 170px;
-            height: 15px;
-            opacity: 0;
-            transform: translateX(-50%) translateY(-50%) translateY(160px) translateX(-10px);
-            animation: te 2s 1.8s forwards ease, shadowt 2s 1s ease infinite forwards;
-        }
-        
-        @keyframes shadowt {
-            from {
-                opacity: 0.2;
-            }
-            50% {
-                opacity: 0.4;
-            }
-            to {
-                opacity: 0.2;
-            }
-        }
-        
-        @keyframes p {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes te {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 0.3;
-            }
-        }
-        
-        #b {
-            animation: b 2s infinite;
-        }
-        
-        #c {
-            animation: c 2s infinite;
-        }
-        
-        @keyframes b {
-            from {
-                opacity: 0;
-            }
-            33% {
-                opacity: 0;
-            }
-            33.33% {
-                opacity: 1;
-            }
-            99.99% {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
-        }
-        
-        @keyframes c {
-            from {
-                opacity: 0;
-            }
-            66.6% {
-                opacity: 0;
-            }
-            66.66% {
-                opacity: 1;
-            }
-            99.99% {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
-        }
-        
-        @keyframes bounce {
-            from {
-                transform: translateX(-50%) translateY(-50%) translateY(120px);
-            }
-            50% {
-                transform: translateX(-50%) translateY(-50%) translateY(125px);
-            }
-            to% {
-                transform: translateX(-50%) translateY(-50%) translateY(120px);
-            }
-        }
-        
-        @font-face {
-            font-family: "devspace";
-            src: url("Pixel.ttf");
-        }
-    </style>
-
-
+    <title>DevSpace Landing Page</title>
 </head>
-<div id="page">
 
-    <div class="box-wrapper">
-        <div class="box">
-            <div class="front">
+<body id="body">
+    <div class="container" style="position: fixed;width: 100%;max-width: 100%;padding: 0;">
+        <hr class="trans--grow hr1" id="hr1">
 
-            </div>
-            <div class="back">
-
-            </div>
-            <div class="top"></div>
-            <div class="bottom"></div>
-            <div class="left">
-                <p>
-                    <img scr="front.png" />
-                </p>
-            </div>
-            <div class="right">
-
-            </div>
-
+        <div class="row" id="viewbox">
+            <svg viewBox="0 0 800 150" style="background-color: black" id="viewbox">
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="80%">DevSpace</text>
+                </symbol>
+                <g class="g-ants">
+                    <use xlink:href="#s-text" class="text-copy" id="g1"></use>
+                    <use xlink:href="#s-text" class="text-copy" id="g2"></use>
+                    <use xlink:href="#s-text" class="text-copy" id="g3"></use>
+                    <use xlink:href="#s-text" class="text-copy" id="g4"></use>
+                    <use xlink:href="#s-text" class="text-copy" id="g5"></use>
+                </g>
+            </svg>
         </div>
-        <!-- end of .box -->
+        <div class="row" id="navbar" style="height: 10%;">
+            <button class="showup">[HOME]</button>
+            <button class="showup">[ABOUT US]</button>
+            <img src="img/logo.png" class="devspace-brand">
+            <button class="showup">[JOIN US]</button>
+            <button class="showup">[CONTACT US]</button>
+        </div>
+
+        <hr class="trans--grow hr2" id="hr2">
+        <br><br>
+        <p class="line anim-typewriter" style="font-family: 'Anonymous Pro', monospace; color: white;" id="a"> </p>
     </div>
-    <!-- end of .box-wrapper -->
-</div>
-<!-- end of #page -->
 
-<p><span id="d">Expect us</span> <span id="a">.</span><span id="b">.</span><span id="c">.</span></p>
-<div class="text-shadow"></div>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <canvas class="header__background" width="100%" style="width: 100%; height: 100%;"></canvas>
 
-  ga('create', 'UA-69787552-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-70979708-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
+    
+    <script src="js/particles.min.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="js/start.js"></script>
+</body>
 
 </html>
